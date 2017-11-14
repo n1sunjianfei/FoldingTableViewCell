@@ -17,9 +17,9 @@ typedef void(^ComplectionBlock)(void);
 @property (weak, nonatomic) IBOutlet UIView *ThirdView;
 @property (weak, nonatomic) IBOutlet UIView *leftSeperatorView;
 
--(void)showListwithTime:(NSArray*)times complection:(ComplectionBlock)complection;
--(void)hideListwithTime:(NSArray*)times complection:(ComplectionBlock)complection;
+- (void)showListwithTime:(NSArray*)times complection:(ComplectionBlock)complection;
+- (void)hideListwithTime:(NSArray*)times complection:(ComplectionBlock)complection;
 
--(void)hiddenFooterViews;
--(void)showFooterViews;
+- (void)hiddenFooterViews;
+- (void)showFooterViews;
 @end

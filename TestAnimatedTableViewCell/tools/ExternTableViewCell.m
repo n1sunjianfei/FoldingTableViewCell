@@ -30,7 +30,7 @@ static const CGFloat maxAngle = 2*M_PI_2-0.3;
 /*
  高度：firstHeight+secondHeight+thirdHeight+margin*2+1*2
 */
--(instancetype)init{
+- (instancetype)init{
     self = [super init];
     if (self) {
         NSArray *array = [[NSBundle mainBundle]loadNibNamed:@"ExternTableViewCell" owner:nil options:nil];
@@ -47,7 +47,7 @@ static const CGFloat maxAngle = 2*M_PI_2-0.3;
 
 #pragma mark - UI
 
--(void)setUI{
+- (void)setUI{
     
     
     [self hiddenFooterViews];
@@ -60,7 +60,7 @@ static const CGFloat maxAngle = 2*M_PI_2-0.3;
     
 }
 
--(void)hiddenFooterViews{
+- (void)hiddenFooterViews{
     self.secondView.hidden = YES;
     self.ThirdView.hidden = YES;
     self.InnerView.frame = CGRectMake(margin, margin, ExternTBLabel_Width-2*margin,firstHeight);
@@ -69,7 +69,7 @@ static const CGFloat maxAngle = 2*M_PI_2-0.3;
     [self.InnerView setCornerRadiusWithType:Corner_Radius_Or_BorderLine_All Radius:5];
     NSLog(@"%f",ExternTBLabel_Width);
 }
--(void)showFooterViews{
+- (void)showFooterViews{
     self.secondView.hidden = NO;
     self.ThirdView.hidden = NO;
     self.InnerView.frame = CGRectMake(margin, margin, ExternTBLabel_Width-2*margin,firstHeight+secondHeight+thirdHeight+1*2);
@@ -80,7 +80,7 @@ static const CGFloat maxAngle = 2*M_PI_2-0.3;
 
 #pragma mark -  show && hide
 
--(void)showListwithTime:(NSArray*)times complection:(ComplectionBlock)complection{
+- (void)showListwithTime:(NSArray*)times complection:(ComplectionBlock)complection{
     
     /*
      *
@@ -177,7 +177,7 @@ static const CGFloat maxAngle = 2*M_PI_2-0.3;
 }
 
 
--(void)hideListwithTime:(NSArray*)times complection:(ComplectionBlock)complection{
+- (void)hideListwithTime:(NSArray*)times complection:(ComplectionBlock)complection{
 
     
     /*
@@ -272,7 +272,7 @@ static const CGFloat maxAngle = 2*M_PI_2-0.3;
 }
 
 #pragma mark - Animation did Stop
--(void)animationDidStop:(ComplectionBlock)complection{
+- (void)animationDidStop:(ComplectionBlock)complection{
     NSLog(@"Animation did Stop");
     if (complection) {
         complection();
@@ -281,7 +281,7 @@ static const CGFloat maxAngle = 2*M_PI_2-0.3;
 
 #pragma mark - anchor point 
 
--(void)prepareAnimation:(UIView*)targetView{
+- (void)prepareAnimation:(UIView*)targetView{
     //设置锚点，实现围绕上边界旋转
     [self setAnchorPointTo:CGPointMake(0.5, 0) view:targetView];
     
@@ -291,13 +291,14 @@ static const CGFloat maxAngle = 2*M_PI_2-0.3;
     self.InnerView.layer.sublayerTransform = transfrom3d;
 }
 
--(void)setShadow:(UIView*)targetView{
+- (void)setShadow:(UIView*)targetView{
     //阴影
     targetView.layer.shadowOpacity = 1.0;// 阴影透明度
     targetView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
     targetView.layer.shadowRadius = 3;// 阴影扩散的范围控制
     targetView.layer.shadowOffset  = CGSizeMake(3, 3);// 阴影的范围
 }
+
 
 
 - (void)setAnchorPointTo:(CGPoint)point view:(UIView*)view{

@@ -16,20 +16,38 @@
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = 0;
     UIRectCorner rectcorners ;
-    if (type==Corner_Radius_Or_BorderLine_All) {
-        rectcorners = UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft|UIRectCornerBottomRight;
-        self.layer.cornerRadius = cornerradius;
-        self.layer.borderColor = [UIColor blackColor].CGColor;
-        return;
-    }else if (type==Corner_Radius_Or_BorderLine_UP){
-        rectcorners = UIRectCornerTopLeft|UIRectCornerTopRight;
-    }else if (type==Corner_Radius_Or_BorderLine_RIGHT){
-        rectcorners = UIRectCornerTopRight|UIRectCornerBottomRight;
-    }else if (type==Corner_Radius_Or_BorderLine_DOWN){
-        rectcorners = UIRectCornerBottomLeft|UIRectCornerBottomRight;
-    }else if (type==Corner_Radius_Or_BorderLine_LEFT){
-        rectcorners = UIRectCornerTopLeft|UIRectCornerBottomLeft;
+    switch (type) {
+        case Corner_Radius_Or_BorderLine_All:{
+            rectcorners = UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft|UIRectCornerBottomRight;
+            self.layer.cornerRadius = cornerradius;
+            self.layer.borderColor = [UIColor blackColor].CGColor;
+        }
+            break;
+
+        case Corner_Radius_Or_BorderLine_UP:{
+            rectcorners = UIRectCornerTopLeft|UIRectCornerTopRight;
+
+        }
+            break;
+        case Corner_Radius_Or_BorderLine_DOWN:{
+            rectcorners = UIRectCornerBottomLeft|UIRectCornerBottomRight;
+
+        }
+            break;
+        case Corner_Radius_Or_BorderLine_LEFT:{
+            rectcorners = UIRectCornerTopLeft|UIRectCornerBottomLeft;
+
+        }
+            break;
+        case Corner_Radius_Or_BorderLine_RIGHT:{
+            rectcorners = UIRectCornerTopRight|UIRectCornerBottomRight;
+
+        }
+            break;
+        default:
+            break;
     }
+
     
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:rectcorners cornerRadii:CGSizeMake(cornerradius, cornerradius)];
     
